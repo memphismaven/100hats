@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Database Sync Tool</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+    }
+    .container {
+      display: flex;
+      gap: 2rem;
+    }
+    .section {
+      border: 1px solid #ccc;
+      padding: 1rem;
+      width: 45%;
+    }
+    .section h2 {
+      margin-top: 0;
+    }
+    .field {
+      margin-bottom: 1rem;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+    input, select {
+      width: 100%;
+      padding: 0.5rem;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+    }
+    #results {
+      margin-top: 2rem;
+      white-space: pre-wrap;
+      background: #f7f7f7;
+      padding: 1rem;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sync Localhost and Live Database</h1>
+  <div class="field">
+    <label for="sync_type">Sync Type</label>
+    <select id="sync_type">
+      <option value="local_to_live">Local to Live</option>
+      <option value="live_to_local">Live to Local</option>
+      <option value="most_recent">Most Recent</option>
+      <option value="review_all">Review All Changes</option>
+    </select>
+  </div>
+  <div class="container">
+    <div class="section">
+      <h2>Localhost Settings</h2>
+      <div class="field">
+        <label for="local_host">Host</label>
+        <input id="local_host" type="text" value="localhost">
+      </div>
+      <div class="field">
+        <label for="local_db">Database Name</label>
+        <input id="local_db" type="text" value="danad2do">
+      </div>
+      <div class="field">
+        <label for="local_user">Username</label>
+        <input id="local_user" type="text" value="root">
+      </div>
+      <div class="field">
+        <label for="local_pass">Password</label>
+        <input id="local_pass" type="password">
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Live Server Settings</h2>
+      <div class="field">
+        <label for="live_host">Host</label>
+        <input id="live_host" type="text" value="100hatscom.ipowermysql.com">
+      </div>
+      <div class="field">
+        <label for="live_db">Database Name</label>
+        <input id="live_db" type="text" value="danad2do">
+      </div>
+      <div class="field">
+        <label for="live_user">Username</label>
+        <input id="live_user" type="text" value="rpt">
+      </div>
+      <div class="field">
+        <label for="live_pass">Password</label>
+        <input id="live_pass" type="password">
+      </div>
+    </div>
+  </div>
+  <button onclick="startSync()">Start Sync</button>
+
+  <div id="results"></div>
+
+  <script>
+    async function startSync() {
+      const body = {
+        sync_type: document.getElementById('sync_type').value,
+        local: {
+          host: document.getElementById('local_host').value,
+          db: document.getElementById('local_db').value,
+          user: document.getElementById('local_user').value,
+          pass: document.getElementById('local_pass').value,
+        },
+        live: {
+          host: document.getElementById('live_host').value,
+          db: document.getElementById('live_db').value,
+          user: document.getElementById('live_user').value,
+          pass: document.getElementById('live_pass').value,
+        },
+      };
+
+      const response = await fetch('sync_handler.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      });
+
+      const result = await response.text();
+      document.getElementById('results').innerHTML = result;
+    }
+  </script>
+</body>
+</html>

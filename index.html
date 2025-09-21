@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    
+    <title>Document</title>
+</head>
+    <body>
+      <nav>
+        <button onclick="showDiv('oh_main')">Home</button>
+        <button onclick="showDiv('OH_search_page')">Search</button> 
+        <button onclick="showDiv('OH_Inbox')">Inbox</button> 
+        <button onclick="showDiv('OH_Today')">Today</button> 
+        <button onclick="showDiv('OH_Upcoming')">Upcoming</button> 
+        <button onclick="showDiv('OH_Filters_Labels')">Filters & Labels</button> 
+      </nav>
+    
+        <main id="main_page">
+          
+          <div id="oh_main" onclick="showDiv('OH_search_page')">
+            <div id="left-pane">
+              <h3>Menu</h3>
+              <ul>
+                <li><a href="#">Add Task</a></li>
+                <li><a href="#">Search</a></li>
+                <li><a href="#">Inbox</a></li>
+                <li><a href="#">Today</a></li>
+                <li><a href="#">Upcoming</a></li>
+                <li><a href="#">Filters</a></li>
+                <li><a href="#">Labels</a></li>
+              </ul>
+            </div>
+          
+            <div id="center-pane">
+              <div class="todo-item">
+                <input type="checkbox" id="task1"> <label for="task1">Task 1</label>
+                <hr>
+              </div>
+          
+              <div class="todo-item">
+                <input type="checkbox" id="task2"> <label for="task2">Task 2</label>
+                <hr>
+              </div>
+          
+              <div class="todo-item">
+                <input type="checkbox" id="task3"> <label for="task3">Task 3</label>
+                <hr>
+              </div>
+          
+              <div class="todo-item">
+                <input type="checkbox" id="task4"> <label for="task4">Task 4</label>
+                <hr>
+              </div>
+          
+              <div class="todo-item">
+                <input type="checkbox" id="task5"> <label for="task5">Task 5</label>
+                <hr>
+              </div>
+            </div>
+          </div>
+
+          <div id="OH_search_page">
+            <h2>OH Search Page</h2>
+            <div id = "search">
+              <div id = "search_input">
+                <input class="text_input" type = "text"/>
+                <input class="text_input" type = "text"/>
+              </div>
+              <button style = "float: right">search</button>
+            </div>
+          </div>
+
+          <div id="OH_search_details_page_1"></div>
+
+          <div id="OH_search_details_page_2"></div>
+
+          <div id="OH_search_details_page_3"></div>
+        </main>
+    
+    <footer>
+      <h1>Footer</h1>
+    </footer>
+      
+    <script src="main.js"></script>
+  </body>
+</html>

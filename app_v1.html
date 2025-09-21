@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="app_v3.css">
+    <title>ToDo List</title>
+    
+</head>
+<body>
+
+<div id="container">
+    <!-- Left Pane -->
+    <div id="left-pane">
+        <a href="#">Add Task</a><br>
+        <a href="#">Search</a><br>
+        <a href="#">Inbox</a><br>
+        <a href="#">Today</a><br>
+        <a href="#">Upcoming</a><br>
+        <a href="#">Filters</a><br>
+        <a href="#">Labels</a><br>
+    </div>
+
+    <!-- Center Pane -->
+    <div id="center-pane">
+        <div class="todo-item">
+            <input type="checkbox" id="task1" >
+            <a href="#" onclick="openPopup('Task 1')">Task 1</a>
+            <hr>
+        </div>
+        <div class="todo-item">
+            <input type="checkbox" id="task2" >
+            <label onclick="openPopup('Task 2')">Task 2</label>
+            <hr>
+        </div>
+        <div class="todo-item">
+            <input type="checkbox" id="task3" onclick="openPopup('Task 3')">
+            <label for="task3">Task 3</label>
+            <hr>
+        </div>
+        <div class="todo-item">
+            <input type="checkbox" id="task4" onclick="openPopup('Task 4')">
+            <label for="task4">Task 4</label>
+            <hr>
+        </div>
+        <div class="todo-item">
+            <input type="checkbox" id="task5" onclick="openPopup('Task 5')">
+            <label for="task5">Task 5</label>
+        </div>
+    </div>
+</div>
+
+<!-- Popup -->
+<div class="overlay" onclick="closePopup()"></div>
+<div class="popup" id="popup">
+    <p id="popup-text"></p>
+</div>
+
+<script>
+    function openPopup(taskName) {
+        document.getElementById('popup-text').innerHTML = taskName;
+        document.getElementById('popup').style.display = 'block';
+        document.getElementById('overlay').style.display = 'block';
+    }
+
+    function closePopup() {
+        document.getElementById('popup').style.display = 'none';
+        document.getElementById('overlay').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="app.css">
+    <title>To-Do App</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="left-pane">
+            <ul>
+                <li><a href="#">Add Task</a></li>
+                <li><a href="#">Search</a></li>
+                <li><a href="#" onclick="changeListHead('Inbox')">Inbox</a></li>
+                <li><a href="#" onclick="changeListHead('Today')">Today</a></li>
+                <li><a href="#">Upcoming</a></li>
+                <li><a href="#">Filters</a></li>
+                <li><a href="#">Labels</a></li>
+            </ul>
+        </div>
+
+        <div class="center-pane">
+            <div id="list_head">Today</div>
+            <ul id="today-list">
+                <!-- Items Due Today will be populated here using JavaScript -->
+            </ul>
+        </div>
+    </div>
+
+    <!-- <div id="popup-container" class="popup-container">
+        <input type="text" placeholder="Task Name">
+        <input type="text" placeholder="Task Description">
+        <button id="save-task">Save Task</button>
+        <button class="cancel" id="cancel-task">Cancel</button>
+    </div> -->
+
+    <script src="app_script.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Manager</title>
+  <style>
+    /* Add your styles here */
+  </style>
+</head>
+<body>
+
+  <h1>Task Manager</h1>
+  
+  <button onclick="openAddTaskForm()">Add Task</button>
+
+  <div id="tasksList"></div>
+
+  <div id="editTaskForm" style="display: none;">
+    <!-- Edit task form content goes here -->
+  </div>
+
+  <script>
+    const siteUrl = "https://100hats.sharepoint.com";
+    const listName = "Tasks";
+
+    function getTasks() {
+      // Make a GET request to retrieve tasks from SharePoint list
+      // Use SharePoint REST API
+
+      // Example URL:
+      const apiUrl = `${siteUrl}/_api/web/lists/getbytitle('${listName}')/items`;
+
+      // Implement your AJAX request here
+
+      // Example using fetch API:
+      fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+          // Process retrieved tasks and display them on the page
+          displayTasks(data.value);
+        })
+        .catch(error => console.error('Error fetching tasks:', error));
+    }
+
+    function displayTasks(tasks) {
+      const tasksListContainer = document.getElementById('tasksList');
+      tasksListContainer.innerHTML = '';
+
+      // Loop through tasks and display them
+      tasks.forEach(task => {
+        // Create task HTML elements and append them to tasksListContainer
+        const taskElement = document.createElement('div');
+        // Add task details to taskElement
+        tasksListContainer.appendChild(taskElement);
+      });
+    }
+
+    function openEditTaskForm(taskId) {
+      // Use the taskId to fetch task details from SharePoint
+      // Populate the edit task form with the retrieved data
+      const editTaskForm = document.getElementById('editTaskForm');
+      editTaskForm.style.display = 'block';
+      // Add code to populate the form with task details
+    }
+
+    function openAddTaskForm() {
+      // Implement code to open the add task form
+      // You can use a modal or a separate div for the form
+      // Add the HTML and JavaScript to handle adding a new task
+    }
+
+    // Call getTasks when the page loads
+    window.onload = getTasks;
+  </script>
+
+</body>
+</html>
